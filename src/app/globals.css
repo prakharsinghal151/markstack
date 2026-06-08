@@ -1,0 +1,483 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+@import "highlight.js/styles/github-dark.css";
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-inter);
+  --font-mono: var(--font-geist-mono);
+
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+/* =========================
+   MarkStack Professional Theme
+   Light + Dark both supported
+========================= */
+
+:root {
+  --background: #f8fafc;
+  --foreground: #0f172a;
+
+  --card: #ffffff;
+  --card-foreground: #0f172a;
+
+  --popover: #ffffff;
+  --popover-foreground: #0f172a;
+
+  --primary: #2563eb;
+  --primary-foreground: #ffffff;
+
+  --secondary: #e0e7ff;
+  --secondary-foreground: #1e1b4b;
+
+  --muted: #f1f5f9;
+  --muted-foreground: #64748b;
+
+  --accent: #dbeafe;
+  --accent-foreground: #1e3a8a;
+
+  --destructive: #ef4444;
+
+  --border: #e2e8f0;
+  --input: #e2e8f0;
+  --ring: #3b82f6;
+
+  --chart-1: #3b82f6;
+  --chart-2: #6366f1;
+  --chart-3: #8b5cf6;
+  --chart-4: #06b6d4;
+  --chart-5: #14b8a6;
+
+  --radius: 0.85rem;
+
+  --sidebar: #ffffff;
+  --sidebar-foreground: #0f172a;
+  --sidebar-primary: #2563eb;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #eef2ff;
+  --sidebar-accent-foreground: #1e3a8a;
+  --sidebar-border: #e2e8f0;
+  --sidebar-ring: #3b82f6;
+}
+
+.dark {
+  --background: #020617;
+  --foreground: #e5e7eb;
+
+  --card: #0f172a;
+  --card-foreground: #f8fafc;
+
+  --popover: #0f172a;
+  --popover-foreground: #f8fafc;
+
+  --primary: #60a5fa;
+  --primary-foreground: #020617;
+
+  --secondary: #1e293b;
+  --secondary-foreground: #e0f2fe;
+
+  --muted: #111827;
+  --muted-foreground: #94a3b8;
+
+  --accent: #1e3a8a;
+  --accent-foreground: #dbeafe;
+
+  --destructive: #f87171;
+
+  --border: rgba(148, 163, 184, 0.18);
+  --input: rgba(148, 163, 184, 0.22);
+  --ring: #60a5fa;
+
+  --chart-1: #60a5fa;
+  --chart-2: #818cf8;
+  --chart-3: #a78bfa;
+  --chart-4: #22d3ee;
+  --chart-5: #2dd4bf;
+
+  --sidebar: #020617;
+  --sidebar-foreground: #e5e7eb;
+  --sidebar-primary: #60a5fa;
+  --sidebar-primary-foreground: #020617;
+  --sidebar-accent: #111827;
+  --sidebar-accent-foreground: #dbeafe;
+  --sidebar-border: rgba(148, 163, 184, 0.16);
+  --sidebar-ring: #60a5fa;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html {
+    @apply font-sans;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply min-h-screen bg-background text-foreground antialiased;
+    font-family:
+      "Inter",
+      ui-sans-serif,
+      system-ui,
+      -apple-system,
+      BlinkMacSystemFont,
+      "Segoe UI",
+      Roboto,
+      "Helvetica Neue",
+      Arial,
+      "Noto Sans",
+      sans-serif;
+
+    background:
+      radial-gradient(circle at 12% 8%, rgba(37, 99, 235, 0.1), transparent 28%),
+      radial-gradient(circle at 88% 12%, rgba(124, 58, 237, 0.08), transparent 30%),
+      var(--background);
+    background-attachment: fixed;
+  }
+
+  .dark body {
+    background:
+      radial-gradient(circle at 12% 8%, rgba(37, 99, 235, 0.24), transparent 30%),
+      radial-gradient(circle at 88% 12%, rgba(124, 58, 237, 0.2), transparent 32%),
+      radial-gradient(circle at 50% 100%, rgba(14, 165, 233, 0.12), transparent 38%),
+      linear-gradient(135deg, #020617 0%, #07111f 45%, #020617 100%);
+    background-attachment: fixed;
+  }
+
+  ::selection {
+    background: rgba(96, 165, 250, 0.35);
+  }
+
+  /* Custom scrollbar styles */
+  ::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba(96, 165, 250, 0.35);
+    border-radius: 999px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(96, 165, 250, 0.65);
+  }
+
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(96, 165, 250, 0.35) transparent;
+  }
+}
+
+/* =========================
+   Professional UI Polish
+========================= */
+
+button,
+[role="button"],
+a,
+input,
+textarea,
+select {
+  transition:
+    background-color 180ms ease,
+    border-color 180ms ease,
+    color 180ms ease,
+    box-shadow 180ms ease,
+    transform 180ms ease,
+    opacity 180ms ease;
+}
+
+button:hover,
+[role="button"]:hover {
+  transform: translateY(-1px);
+}
+
+.bg-primary {
+  box-shadow: 0 10px 28px rgba(37, 99, 235, 0.22);
+}
+
+.dark .bg-primary {
+  box-shadow: 0 12px 35px rgba(96, 165, 250, 0.24);
+}
+
+.bg-card,
+.bg-popover {
+  backdrop-filter: blur(14px);
+}
+
+:root .bg-card,
+:root .bg-popover {
+  background-color: rgba(255, 255, 255, 0.86);
+}
+
+.dark .bg-card,
+.dark .bg-popover {
+  background-color: rgba(15, 23, 42, 0.82);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  letter-spacing: -0.035em;
+}
+
+.font-bold,
+.font-semibold {
+  letter-spacing: -0.02em;
+}
+
+input,
+textarea,
+select {
+  background-color: var(--card);
+}
+
+/* =========================
+   Markdown Preview Styles
+========================= */
+
+.prose {
+  @apply text-foreground;
+}
+
+.prose h1 {
+  @apply text-3xl font-bold mt-8 mb-4 text-foreground border-b border-border pb-2;
+}
+
+.prose h2 {
+  @apply text-2xl font-semibold mt-6 mb-3 text-foreground;
+}
+
+.prose h3 {
+  @apply text-xl font-semibold mt-5 mb-3 text-foreground;
+}
+
+.prose h4 {
+  @apply text-lg font-semibold mt-4 mb-2 text-foreground;
+}
+
+.prose h5 {
+  @apply text-base font-semibold mt-3 mb-2 text-foreground;
+}
+
+.prose h6 {
+  @apply text-sm font-semibold mt-3 mb-2 text-muted-foreground;
+}
+
+.prose p {
+  @apply my-4 leading-7;
+}
+
+.prose ul {
+  @apply my-4 pl-8 list-disc space-y-1;
+}
+
+.prose ol {
+  @apply my-4 pl-8 list-decimal space-y-1;
+}
+
+.prose li {
+  @apply my-1 leading-7;
+}
+
+.prose blockquote {
+  @apply my-6 border-l-4 border-primary pl-6 italic text-muted-foreground;
+}
+
+.prose code {
+  @apply bg-muted px-1.5 py-0.5 rounded text-sm font-mono text-foreground;
+}
+
+.prose pre {
+  @apply my-6 p-4 bg-muted rounded-lg overflow-x-auto border border-border;
+  box-shadow: 0 18px 45px rgba(2, 6, 23, 0.12);
+}
+
+.dark .prose pre {
+  box-shadow: 0 24px 60px rgba(2, 6, 23, 0.35);
+}
+
+.prose pre code {
+  @apply bg-transparent p-0 text-sm leading-relaxed;
+}
+
+.prose table {
+  @apply my-6 w-full border-collapse border border-border;
+}
+
+.prose thead {
+  @apply bg-muted;
+}
+
+.prose th {
+  @apply border border-border px-4 py-2 text-left font-semibold;
+}
+
+.prose td {
+  @apply border border-border px-4 py-2;
+}
+
+.prose tr:nth-child(even) {
+  @apply bg-muted/50;
+}
+
+.prose hr {
+  @apply my-8 border-0 border-t border-border;
+}
+
+.prose a {
+  @apply text-primary hover:text-primary/80 underline underline-offset-4;
+}
+
+.prose img {
+  @apply my-6 rounded-lg shadow-sm max-w-full h-auto border border-border;
+}
+
+.prose strong {
+  @apply font-semibold text-foreground;
+}
+
+.prose em {
+  @apply italic;
+}
+
+.prose del {
+  @apply line-through text-muted-foreground;
+}
+
+.prose mark {
+  @apply bg-yellow-200 dark:bg-yellow-800 px-1 py-0.5 rounded;
+}
+
+/* Code block syntax highlighting adjustments */
+.prose pre code.hljs {
+  @apply bg-transparent p-0;
+}
+
+.prose .hljs {
+  @apply bg-transparent;
+}
+
+.prose .hljs-comment,
+.prose .hljs-quote {
+  @apply text-muted-foreground italic;
+}
+
+.prose .hljs-keyword,
+.prose .hljs-selector-tag,
+.prose .hljs-subst {
+  @apply text-purple-500 dark:text-purple-400;
+}
+
+.prose .hljs-number,
+.prose .hljs-literal,
+.prose .hljs-variable,
+.prose .hljs-template-variable,
+.prose .hljs-tag .hljs-attr {
+  @apply text-blue-500 dark:text-blue-400;
+}
+
+.prose .hljs-string,
+.prose .hljs-doctag {
+  @apply text-green-500 dark:text-green-400;
+}
+
+.prose .hljs-title,
+.prose .hljs-section,
+.prose .hljs-selector-id {
+  @apply text-yellow-500 dark:text-yellow-400;
+}
+
+.prose .hljs-type,
+.prose .hljs-class .hljs-title {
+  @apply text-cyan-500 dark:text-cyan-400;
+}
+
+.prose .hljs-tag,
+.prose .hljs-name,
+.prose .hljs-attribute {
+  @apply text-red-500 dark:text-red-400;
+}
+
+.prose .hljs-regexp,
+.prose .hljs-link {
+  @apply text-orange-500 dark:text-orange-400;
+}
+
+.prose .hljs-symbol,
+.prose .hljs-bullet {
+  @apply text-pink-500 dark:text-pink-400;
+}
+
+.prose .hljs-built_in,
+.prose .hljs-builtin-name {
+  @apply text-indigo-500 dark:text-indigo-400;
+}
+
+.prose .hljs-meta {
+  @apply text-gray-500 dark:text-gray-400;
+}
+
+.prose .hljs-deletion {
+  @apply bg-red-100 dark:bg-red-900/20;
+}
+
+.prose .hljs-addition {
+  @apply bg-green-100 dark:bg-green-900/20;
+}
+
+.prose .hljs-emphasis {
+  @apply italic;
+}
+
+.prose .hljs-strong {
+  @apply font-bold;
+}
